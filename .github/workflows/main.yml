@@ -1,0 +1,26 @@
+name: Python Application CI
+on:
+  push:
+    branches:
+      -main
+
+jobs:
+ build:
+   runs-on: ubuntu-latest 
+   
+   steps:
+   - name: Check out the repository
+     uses: actions/checkout@v4 
+  
+   - name: Set up Python
+     uses: actions/setup-python@v5
+     with:
+      python-version: ‘3.12'
+   - name: Installdependencies
+     run: |
+       python-m pipinstall--upgrade pip
+       pipinstall-r requirements.txt
+   - name: Runtests
+     run: |
+       pipinstallpytest
+       pytest
